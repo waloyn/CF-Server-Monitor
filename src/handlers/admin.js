@@ -199,9 +199,10 @@ export async function handleAdminAPI(request, env, sys) {
     }
 
     if (data.action === 'get_settings') {
+      const { jwt_secret, ...safeSettings } = sys || {};
       return createSuccessResponse({
         success: true,
-        settings: sys,
+        settings: safeSettings,
         api_secret: env.API_SECRET
       });
     }

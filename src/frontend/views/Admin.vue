@@ -1266,7 +1266,6 @@ const saveSettings = async () => {
         turnstile_secret_key: settings.value.turnstile_secret_key,
         cloudflare_account_id: settings.value.cloudflare_account_id,
         cloudflare_token: settings.value.cloudflare_token,
-        jwt_secret: settings.value.jwt_secret,
         username: settings.value.username,
         custom_ct: settings.value.custom_ct,
         custom_cu: settings.value.custom_cu,
@@ -1278,6 +1277,11 @@ const saveSettings = async () => {
     // 只有当用户输入了新密码时才保存密码
     if (settings.value.password && settings.value.password.length > 0) {
       data.settings.password = settings.value.password
+    }
+
+    // 只有当用户输入了新的 JWT Secret 时才保存
+    if (settings.value.jwt_secret && settings.value.jwt_secret.length > 0) {
+      data.settings.jwt_secret = settings.value.jwt_secret
     }
 
     try {
